@@ -11,7 +11,7 @@ program machine_epsilon_32bit_precision
         print *, epsilon, n
     end do
 
-    print *, 'Machine epsilon for single precision is: ', epsilon
+    print *, 'Machine epsilon for 32bit precision is: ', epsilon
     print *, 'Number of iteration it took is: ', n
 end program machine_epsilon_32bit_precision
 
@@ -28,7 +28,7 @@ end program machine_epsilon_32bit_precision
 !         print *, epsilon, n
 !     end do
 
-!     print *, 'Machine epsilon for double precision is: ', epsilon
+!     print *, 'Machine epsilon for 64bit precision is: ', epsilon
 !     print *, 'Number of iteration it took is: ', n
 ! end program machine_epsilon_64bit_precision
 

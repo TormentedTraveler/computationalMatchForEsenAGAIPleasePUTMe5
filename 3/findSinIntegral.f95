@@ -1,6 +1,6 @@
 program calculateIntegral
 
-    real, parameter :: PI = 3.141592653
+    real, parameter :: PI = atan(1.0) * 4
     real :: a = PI, b = PI*3/2, S = 0, random_num, random_num_from_a_to_b
     integer :: M = 1000, i = 0
     

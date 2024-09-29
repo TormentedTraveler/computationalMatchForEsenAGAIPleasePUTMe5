@@ -1,0 +1,26 @@
+program calculateDarbuz
+    
+    integer, parameter :: numberOfIntervals = 4
+    
+    integer :: counter = 0
+    
+    real, parameter :: PI = atan(1.0)*4, leftLim = PI, rightLim = PI*3/2
+    
+    real :: lengthOfInterval = (rightLim - leftLim) / numberOfIntervals
+    
+    real :: lowerSum, upperSum, areaOfLower = 0.0, areaOfUpper = 0.0, currentLeft = PI, currentRight
+    
+    do while (counter < numberOfIntervals)
+        currentRight = currentLeft + lengthOfInterval
+        
+        areaOfLower = sin(currentLeft) * lengthOfInterval + areaOfLower
+        areaOfUpper = sin(currentRight) * lengthOfInterval + areaOfUpper
+        
+        currentLeft = currentLeft + lengthOfInterval
+        
+        counter = counter + 1
+    enddo
+    
+    print *, 'area of lower is: ', areaOfLower, 'area of upper is: ', areaOfUpper
+
+end program

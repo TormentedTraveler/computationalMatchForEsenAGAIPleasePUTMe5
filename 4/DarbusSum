@@ -2,15 +2,22 @@ program calculateDarbuz
     
     integer, parameter :: numberOfIntervals = 4
     
-    integer :: counter = 0
+    integer :: counter = 0, counter2 = 0
     
     real, parameter :: PI = atan(1.0)*4, leftLim = PI, rightLim = PI*3/2
     
     real :: lengthOfInterval = (rightLim - leftLim) / numberOfIntervals
     
-    real :: lowerSum, upperSum, areaOfLower = 0.0, areaOfUpper = 0.0, currentLeft = PI, currentRight
+    real :: lowerSum, upperSum, areaOfLower = 0.0, areaOfUpper = 0.0, currentLeft = PI, currentRight, currentV2Left, currectV2Right, v2Length
     
     do while (counter < numberOfIntervals)
+    
+        ! pseudo code right here
+        ! I don't have time right now so let me write it 
+        ! I will divide some part of function into let's say 1000 pieces
+        ! I will iterate 1000 times and each time I will compare current value of function (f(i-1)) with new evaluated value of function (f(i))
+        ! this way I will find the max and min which will then be used as currentRight and currentLeft
+        
         currentRight = currentLeft + lengthOfInterval
         
         areaOfLower = sin(currentLeft) * lengthOfInterval + areaOfLower

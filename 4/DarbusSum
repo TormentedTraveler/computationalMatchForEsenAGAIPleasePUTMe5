@@ -1,32 +1,48 @@
 program calculateDarbuz
     
-    integer, parameter :: numberOfIntervals = 4
+    integer, parameter :: numberOfIntervals = 4 ! given as input
     
     integer :: counter = 0, counter2 = 0
     
     real, parameter :: PI = atan(1.0)*4, leftLim = PI, rightLim = PI*3/2
     
     real :: lengthOfInterval = (rightLim - leftLim) / numberOfIntervals
-    
-    real :: lowerSum, upperSum, areaOfLower = 0.0, areaOfUpper = 0.0, currentLeft = PI, currentRight, currentV2Left, currectV2Right, v2Length
+
+    real :: lowerSum, upperSum, areaOfLower = 0.0, areaOfUpper = 0.0, currentLeft = PI, currentRight
+    real :: lengthOfInnerInterval, X, smallestVal, biggestVal
     
     do while (counter < numberOfIntervals)
-    
-        ! pseudo code right here
-        ! I don't have time right now so let me write it 
-        ! I will divide some part of function into let's say 1000 pieces
-        ! I will iterate 1000 times and each time I will compare current value of function (f(i-1)) with new evaluated value of function (f(i))
-        ! this way I will find the max and min which will then be used as currentRight and currentLeft
         
-        currentRight = currentLeft + lengthOfInterval
+        lengthOfInnerInterval = lengthOfInterval / 1000
+        X = currentLeft
+        smallestVal = sin(X)
+        biggestVal = sin(X)
         
-        areaOfLower = sin(currentLeft) * lengthOfInterval + areaOfLower
-        areaOfUpper = sin(currentRight) * lengthOfInterval + areaOfUpper
+        do while (counter2 < 1000) 
+            
+            if (sin(X) > biggestVal) then
+                biggestVal = sin(X)
+            endif
+            
+            if(sin(X) < smallestVal) then
+                smallestVal = sin(X)
+            endif
+            
+            X = X + lengthOfInnerInterval
+            counter2 = counter2 + 1
         
-        currentLeft = currentLeft + lengthOfInterval
+        enddo
+        
+        counter2 = 0
+        
+        areaOfLower = smallestVal * lengthOfInterval + areaOfLower
+        areaOfUpper = biggestVal * lengthOfInterval + areaOfUpper
         
         counter = counter + 1
+        
+        currentLeft = currentLeft + lengthOfInterval
     enddo
+    
     
     print *, 'area of lower is: ', areaOfLower, 'area of upper is: ', areaOfUpper
 
